@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.env
+*.log
+
+# Large training artifacts (code/docs only in git)
+outputs/sft_merged/
+outputs/sft_adapter/
+outputs/grpo_merged/
+outputs/grpo_adapter/
+outputs/**/*.safetensors
+outputs/**/tokenizer.json
+
+# Local secrets / keys must never be committed
+id_ed25519*
+*.pem
+.env.*
+
+.hf_home/
+*.tmp
+.tmp*

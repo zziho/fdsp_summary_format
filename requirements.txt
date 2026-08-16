@@ -1,0 +1,8 @@
+transformers
+trl
+peft
+accelerate
+datasets
+sentencepiece
+safetensors
+wandb
