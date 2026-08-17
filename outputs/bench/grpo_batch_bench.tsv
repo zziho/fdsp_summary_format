@@ -1,0 +1,2 @@
+per_device	prompts_per_step	step_sec	sec_per_prompt	peak_gpu0_mib	peak_gpu1_mib	status
+8	4	169.03	42.3	64070	61190	ok

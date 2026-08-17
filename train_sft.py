@@ -42,8 +42,8 @@ def main() -> None:
     faulthandler.register(signal.SIGUSR1)
     os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
     os.environ.setdefault("FSDP_CPU_RAM_EFFICIENT_LOADING", "true")
-    os.environ.setdefault("NCCL_P2P_DISABLE", "1")
-    os.environ.setdefault("NCCL_IB_DISABLE", "1")
+    os.environ.setdefault("NCCL_P2P_DISABLE", "0")
+    os.environ.setdefault("NCCL_IB_DISABLE", "0")
     OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
 
     stage = "sft"

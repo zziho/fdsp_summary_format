@@ -58,7 +58,9 @@ def _json_reward(response: str, prompt: str) -> float:
         if subs:
             expected += len(subs)
             if isinstance(value, dict):
-                sub_hits += sum(sub in value and str(value[sub]).strip() for sub in subs)
+                sub_hits += sum(
+                    bool(sub in value and str(value[sub]).strip()) for sub in subs
+                )
         else:
             expected += 1
             sub_hits += int(value is not None and bool(str(value).strip()))
@@ -124,24 +126,32 @@ def _html_reward(response: str, prompt: str) -> float:
     return score + (2.0 if score >= 5.0 else 0.0)
 
 
+def _score(response_text: str, prompt_text: str) -> float:
+    lower = prompt_text.lower()
+    if "html table" in lower:
+        return _html_table_reward(response_text, prompt_text)
+    if "html" in lower:
+        return _html_reward(response_text, prompt_text)
+    if "markdown table" in lower:
+        return _markdown_table_reward(response_text, prompt_text)
+    if "마크다운" in lower or "markdown" in lower:
+        return _markdown_reward(response_text, prompt_text)
+    if "jsonl" in lower or "json" in lower:
+        return _json_reward(response_text, prompt_text)
+    return 0.0
+
+
 def format_reward(completions, prompts, **_) -> list[float]:
     """Select the same format-specific reward from each sample's prompt."""
     rewards = []
     for completion, prompt in zip(completions, prompts, strict=True):
         response_text = _content(completion)
         prompt_text = _content(prompt)
-        lower = prompt_text.lower()
-        if "html table" in lower:
-            reward = _html_table_reward(response_text, prompt_text)
-        elif "html" in lower:
-            reward = _html_reward(response_text, prompt_text)
-        elif "markdown table" in lower:
-            reward = _markdown_table_reward(response_text, prompt_text)
-        elif "마크다운" in lower or "markdown" in lower:
-            reward = _markdown_reward(response_text, prompt_text)
-        elif "jsonl" in lower or "json" in lower:
-            reward = _json_reward(response_text, prompt_text)
-        else:
+        # A malformed generation must never abort a multi-hour RL run.
+        try:
+            reward = _score(response_text, prompt_text)
+        except Exception as exc:  # noqa: BLE001
+            print(f"[reward] scoring failed ({type(exc).__name__}: {exc})", flush=True)
             reward = 0.0
         rewards.append(float(reward))
     return rewards

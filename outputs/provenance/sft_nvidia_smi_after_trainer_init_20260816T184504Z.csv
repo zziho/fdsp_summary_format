@@ -1,0 +1,3 @@
+index,uuid,name,utilization.gpu,utilization.memory,memory.used.MiB,memory.total.MiB,memory.free.MiB
+0, GPU-758f1527-a375-0e1b-8f66-857f0c798e2f, NVIDIA A100-SXM4-80GB, 15, 0, 642, 81920, 80700
+1, GPU-34fabfd6-da8d-42a1-a162-1c18ae8e31d9, NVIDIA A100-SXM4-80GB, 7, 0, 642, 81920, 80700

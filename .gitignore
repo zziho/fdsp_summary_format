@@ -4,14 +4,17 @@ __pycache__/
 .venv/
 .env
 *.log
+*.out
 
-# Large training artifacts (code/docs only in git)
+# Large training artifacts — keep small checkpoint metadata only
+**/adapter_model.safetensors
+**/*.safetensors
+**/tokenizer.json
 outputs/sft_merged/
-outputs/sft_adapter/
+outputs/**/sft_merged/
 outputs/grpo_merged/
-outputs/grpo_adapter/
-outputs/**/*.safetensors
-outputs/**/tokenizer.json
+outputs/sft_adapter_smoke_backup/
+outputs/smoke/
 
 # Local secrets / keys must never be committed
 id_ed25519*
@@ -21,3 +24,7 @@ id_ed25519*
 .hf_home/
 *.tmp
 .tmp*
+
+# Symlinks / nested merged model copies
+**/sft_merged
+outputs/bench/**/sft_merged
