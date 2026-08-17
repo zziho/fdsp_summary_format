@@ -72,7 +72,7 @@ echo "GRPO_END $(date -u +%Y-%m-%dT%H:%M:%SZ) EXIT:${EC} ELAPSED_SEC:$((END-STAR
   --stage grpo \
   --log outputs/logs/grpo_train.log \
   --metrics outputs/grpo_metrics.jsonl \
-  --out "reports/GRPO_작업_과정_및_결과.md" || true
+  --out "reports/GRPO_REPORT.md" || true
 
 if [[ "${EC}" -ne 0 ]]; then
   echo "GRPO failed"; exit "${EC}"
@@ -94,7 +94,7 @@ echo "MERGE_GRPO_END $(date -u +%Y-%m-%dT%H:%M:%SZ) EXIT:${EC} ELAPSED_SEC:$((EN
   echo "### Merge 결과"
   echo "- merged path: \`outputs/grpo_merged\`"
   echo "- merge wall-clock: $((END-START))s"
-} >> "reports/GRPO_작업_과정_및_결과.md"
+} >> "reports/GRPO_REPORT.md"
 
 echo "GRPO_PIPELINE_COMPLETE $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-echo "Reports: reports/GRPO_작업_과정_및_결과.md"
+echo "Reports: reports/GRPO_REPORT.md"

@@ -190,7 +190,7 @@ FSDP `activation_checkpointing=True` 유지.
 | GRPO adapter | `outputs/grpo_adapter` | 학습 종료 후 |
 | mid ckpt | `outputs/grpo_adapter_step{20…100…}` | ✅ 진행 중 |
 | merged | `outputs/grpo_merged` | merge 후 |
-| 전체 요약 | `reports/FSDP_전체_작업_기록.md` | ✅ |
+| 전체 요약 | `reports/FSDP_FULL_PIPELINE_REPORT.md` | ✅ |
 
 완료 후 timing/metrics/exit 반영 + merge 자동 진행.  
 다음 런 권장: `eval_strategy="no"` (또는 간격 확대).

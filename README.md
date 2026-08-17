@@ -36,3 +36,10 @@ For a short integration test:
 /venv/main/bin/torchrun --standalone --nproc_per_node=2 train_sft.py \
   --limit 32 --max-steps 1
 ```
+
+## Reports
+
+- [SFT report](reports/SFT_REPORT.md)
+- [GRPO report](reports/GRPO_REPORT.md)
+- [FSDP full pipeline report](reports/FSDP_FULL_PIPELINE_REPORT.md)
+- [Single-GPU SFT report](single_reports/SINGLE_GPU_SFT_REPORT.md)

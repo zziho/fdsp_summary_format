@@ -61,7 +61,7 @@ echo "SINGLE_SFT_END $(date -u +%Y-%m-%dT%H:%M:%SZ) EXIT:${EC} ELAPSED_SEC:$((EN
 "${PYTHON}" generate_single_sft_report.py \
   --exit-code "${EC}" \
   --elapsed-sec "$((END-START))" \
-  --out single_reports/SINGLE_GPU_SFT_작업_과정_및_결과.md \
+  --out single_reports/SINGLE_GPU_SFT_REPORT.md \
   | tee -a "${LOG}"
 
 exit "${EC}"

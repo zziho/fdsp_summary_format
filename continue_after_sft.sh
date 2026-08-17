@@ -71,7 +71,7 @@ echo "Found SFT adapter: outputs/sft_adapter"
   --stage sft \
   --log outputs/logs/sft_train.log \
   --metrics outputs/sft_metrics.jsonl \
-  --out "reports/SFT_작업_과정_및_결과.md" || true
+  --out "reports/SFT_REPORT.md" || true
 
 # --- SFT merge ---
 echo "MERGE_SFT_START $(date -u +%Y-%m-%dT%H:%M:%SZ)"
@@ -93,11 +93,11 @@ fi
   --stage sft \
   --log outputs/logs/sft_train.log \
   --metrics outputs/sft_metrics.jsonl \
-  --out "reports/SFT_작업_과정_및_결과.md" || true
-echo "" >> "reports/SFT_작업_과정_및_결과.md"
-echo "### Merge 결과" >> "reports/SFT_작업_과정_및_결과.md"
-echo "- merged path: \`outputs/sft_merged\`" >> "reports/SFT_작업_과정_및_결과.md"
-echo "- merge wall-clock: $((END-START))s" >> "reports/SFT_작업_과정_및_결과.md"
+  --out "reports/SFT_REPORT.md" || true
+echo "" >> "reports/SFT_REPORT.md"
+echo "### Merge 결과" >> "reports/SFT_REPORT.md"
+echo "- merged path: \`outputs/sft_merged\`" >> "reports/SFT_REPORT.md"
+echo "- merge wall-clock: $((END-START))s" >> "reports/SFT_REPORT.md"
 
 # Optional short activation-ckpt A/B smoke (2 steps) — skip if SKIP_AB=1
 if [[ "${SKIP_AB:-0}" != "1" ]]; then
@@ -132,7 +132,7 @@ echo "GRPO_END $(date -u +%Y-%m-%dT%H:%M:%SZ) EXIT:${EC} ELAPSED_SEC:$((END-STAR
   --stage grpo \
   --log outputs/logs/grpo_train.log \
   --metrics outputs/grpo_metrics.jsonl \
-  --out "reports/GRPO_작업_과정_및_결과.md" || true
+  --out "reports/GRPO_REPORT.md" || true
 
 if [[ "${EC}" -ne 0 ]]; then
   echo "GRPO failed with ${EC}; skip GRPO merge"
@@ -155,12 +155,12 @@ echo "MERGE_GRPO_END $(date -u +%Y-%m-%dT%H:%M:%SZ) EXIT:${EC} ELAPSED_SEC:$((EN
   --stage grpo \
   --log outputs/logs/grpo_train.log \
   --metrics outputs/grpo_metrics.jsonl \
-  --out "reports/GRPO_작업_과정_및_결과.md" || true
-echo "" >> "reports/GRPO_작업_과정_및_결과.md"
-echo "### Merge 결과" >> "reports/GRPO_작업_과정_및_결과.md"
-echo "- merged path: \`outputs/grpo_merged\`" >> "reports/GRPO_작업_과정_및_결과.md"
-echo "- merge wall-clock: $((END-START))s" >> "reports/GRPO_작업_과정_및_결과.md"
+  --out "reports/GRPO_REPORT.md" || true
+echo "" >> "reports/GRPO_REPORT.md"
+echo "### Merge 결과" >> "reports/GRPO_REPORT.md"
+echo "- merged path: \`outputs/grpo_merged\`" >> "reports/GRPO_REPORT.md"
+echo "- merge wall-clock: $((END-START))s" >> "reports/GRPO_REPORT.md"
 
 echo "CONTINUE_COMPLETE $(date -u +%Y-%m-%dT%H:%M:%SZ)"
 echo "Artifacts: outputs/sft_adapter outputs/sft_merged outputs/grpo_adapter outputs/grpo_merged"
-echo "Reports: reports/SFT_작업_과정_및_결과.md reports/GRPO_작업_과정_및_결과.md"
+echo "Reports: reports/SFT_REPORT.md reports/GRPO_REPORT.md"

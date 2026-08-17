@@ -20,8 +20,8 @@ Updated: 2026-08-16T19:05Z
 | Continuer log | `outputs/logs/continue_after_sft.log` |
 | SFT train log | `outputs/logs/sft_train.log` |
 | GRPO train log | `outputs/logs/grpo_train.log` |
-| SFT report | `reports/SFT_작업_과정_및_결과.md` |
-| GRPO report | `reports/GRPO_작업_과정_및_결과.md` |
+| SFT report | `reports/SFT_REPORT.md` |
+| GRPO report | `reports/GRPO_REPORT.md` |
 | Artifacts | `outputs/sft_adapter`, `sft_merged`, `grpo_adapter`, `grpo_merged` |
 
 ## Check commands

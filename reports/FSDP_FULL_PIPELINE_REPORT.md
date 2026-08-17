@@ -3,8 +3,8 @@
 작성/갱신: 2026-08-17 12:23 UTC (GRPO 진행 중, ~108/240)  
 작업 디렉토리: `/workspace/fdsp_summary_format`  
 상세 리포트:
-- `reports/SFT_작업_과정_및_결과.md` (SFT 완료)
-- `reports/GRPO_작업_과정_및_결과.md` (GRPO 진행 중)
+- `reports/SFT_REPORT.md` (SFT 완료)
+- `reports/GRPO_REPORT.md` (GRPO 진행 중)
 
 ---
 
@@ -250,12 +250,12 @@ FSDP가 줄이는 건 주로 **param/grad/opt**. activation·generate 버퍼는 
 | SFT adapter | `outputs/sft_adapter` | ✅ |
 | SFT merged | `outputs/sft_merged` | ✅ |
 | SFT metrics | `outputs/sft_metrics.jsonl` | ✅ |
-| SFT report | `reports/SFT_작업_과정_및_결과.md` | ✅ |
+| SFT report | `reports/SFT_REPORT.md` | ✅ |
 | GRPO mid ckpt | `outputs/grpo_adapter_step{20…100}` | ✅ 진행 중 |
 | GRPO final adapter | `outputs/grpo_adapter` | ⏳ 종료 후 |
 | GRPO merged | `outputs/grpo_merged` | ⏳ merge 후 |
 | GRPO log | `outputs/logs/grpo_train.log` / `grpo_only_pipeline.log` | ✅ |
-| GRPO report | `reports/GRPO_작업_과정_및_결과.md` | ⏳ 완료 후 최종 갱신 |
+| GRPO report | `reports/GRPO_REPORT.md` | ⏳ 완료 후 최종 갱신 |
 | Provenance | `outputs/provenance/` | ✅ |
 | Progress helper | `show_progress.py` | ✅ |
 
